@@ -1,6 +1,14 @@
 package com.backend.musicalta.model.evento;
 
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Local {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String logradouro;
     private String tipoLogradouro;
