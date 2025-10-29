@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Local Spring Boot properties ###
+# Ignorar arquivo de configuração local (contém credenciais)
+/src/main/resources/application.properties
