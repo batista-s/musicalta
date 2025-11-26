@@ -1,5 +1,6 @@
 package com.backend.musicalta.model.financeiro;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
