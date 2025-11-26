@@ -7,8 +7,10 @@ import jakarta.persistence.TemporalType;
 import java.util.Date;
 
 @Entity
+@DiscriminatorValue(value = "Pix")
 public class Pix extends FormaDePagamento {
     private String codigo;
     @Temporal(TemporalType.DATE)
     private Date validadeCodigo;
 }
+

@@ -6,6 +6,7 @@ import jdk.jfr.Timestamp;
 import java.util.Date;
 
 @Entity
+@DiscriminatorValue(value = "Cartao")
 public class Cartao extends  FormaDePagamento {
     private String numero;
     private String titular;
