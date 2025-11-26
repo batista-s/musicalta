@@ -18,5 +18,6 @@ public class Evento {
     @ManyToOne
     private Funcionario funcionario;
     @OneToMany
+    @JoinColumn(name = "evento_id")
     private List<Data> datas = new ArrayList<>();
 }
