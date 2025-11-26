@@ -20,4 +20,7 @@ public class Reserva {
     private Cliente cliente;
     @OneToMany
     private List<Ingresso> ingressos = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "reserva_id")
+    private Pagamento pagamento;
 }

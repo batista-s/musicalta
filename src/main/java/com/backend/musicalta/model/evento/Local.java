@@ -18,4 +18,7 @@ public class Local {
     private String cidade;
     private String uf;
     private String cep;
+    @OneToMany
+    @JoinColumn(name = "local_id")
+    private List<Assento> assentos = new ArrayList<>();
 }

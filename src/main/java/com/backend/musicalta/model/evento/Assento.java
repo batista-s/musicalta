@@ -11,6 +11,4 @@ public class Assento {
     private int fileira;
     private int setor;
     private int status;
-    @ManyToOne
-    private Local local;
 }
