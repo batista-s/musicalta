@@ -14,5 +14,8 @@ public class Ingresso {
     private StatusIngresso status;
     @ManyToOne
     private Evento evento;
+    @ManyToOne
+    @JoinColumn(name = "assento_id")
+    private Assento assento;
 }
 
