@@ -1,11 +1,15 @@
-package com.backend.musicalta.model.evento;
+package com.backend.musicalta.model.entities.evento;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Local {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,4 +22,7 @@ public class Local {
     private String cidade;
     private String uf;
     private String cep;
+    @OneToMany
+    @JoinColumn(name = "local_id")
+    private List<Assento> assentos = new ArrayList<>();
 }

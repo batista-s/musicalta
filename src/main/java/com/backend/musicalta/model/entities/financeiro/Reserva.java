@@ -1,14 +1,18 @@
-package com.backend.musicalta.model.financeiro;
+package com.backend.musicalta.model.entities.financeiro;
 
-import com.backend.musicalta.model.evento.Ingresso;
-import com.backend.musicalta.model.usuario.Cliente;
+import com.backend.musicalta.model.entities.evento.Ingresso;
+import com.backend.musicalta.model.entities.usuario.Cliente;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,4 +24,7 @@ public class Reserva {
     private Cliente cliente;
     @OneToMany
     private List<Ingresso> ingressos = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "reserva_id")
+    private Pagamento pagamento;
 }

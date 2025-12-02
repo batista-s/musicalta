@@ -1,8 +1,12 @@
-package com.backend.musicalta.model.evento;
+package com.backend.musicalta.model.entities.evento;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Assento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,6 +15,4 @@ public class Assento {
     private int fileira;
     private int setor;
     private int status;
-    @ManyToOne
-    private Local local;
 }
