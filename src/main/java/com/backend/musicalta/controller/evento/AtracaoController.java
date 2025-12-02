@@ -12,22 +12,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/atracoes")
 public class AtracaoController {
-    private AtracaoService atracaoService;
+    private final AtracaoService atracaoService;
 
     public AtracaoController(AtracaoService atracaoService) {
         this.atracaoService = atracaoService;
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody @Valid Atracao atracao) {
+    public ResponseEntity<Atracao> create(@RequestBody @Valid Atracao atracao) {
         atracao = atracaoService.create(atracao);
-        return new ResponseEntity<Atracao>(atracao, HttpStatus.CREATED);
+        return new ResponseEntity<>(atracao, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable int id, @RequestBody @Valid Atracao atracao) {
+    public ResponseEntity<Atracao> update(@PathVariable int id, @RequestBody @Valid Atracao atracao) {
         Atracao atracaoNew = atracaoService.update(id, atracao);
-        return new ResponseEntity(atracaoNew, HttpStatus.OK);
+        return new ResponseEntity<>(atracaoNew, HttpStatus.OK);
     }
 
 
@@ -37,16 +37,16 @@ public class AtracaoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<Atracao>> get(@PathVariable int id){
+    public ResponseEntity<Atracao> get(@PathVariable int id){
         Atracao atracao = atracaoService.get(id);
-        return new ResponseEntity(atracao, HttpStatus.OK);
+        return new ResponseEntity<>(atracao, HttpStatus.OK);
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable int id){
+    public ResponseEntity<Void> delete(@PathVariable int id){
         atracaoService.delete(id);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

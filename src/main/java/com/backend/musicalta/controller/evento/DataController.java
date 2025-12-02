@@ -12,22 +12,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/datas")
 public class DataController {
-    private DataService dataService;
+    private final DataService dataService;
 
     public DataController(DataService dataService) {
         this.dataService = dataService;
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody @Valid Data data) {
+    public ResponseEntity<Data> create(@RequestBody @Valid Data data) {
         data = dataService.create(data);
-        return new ResponseEntity<Data>(data, HttpStatus.CREATED);
+        return new ResponseEntity<>(data, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable int id, @RequestBody @Valid Data data) {
+    public ResponseEntity<Data> update(@PathVariable int id, @RequestBody @Valid Data data) {
         Data dataNew = dataService.update(id, data);
-        return new ResponseEntity(dataNew, HttpStatus.OK);
+        return new ResponseEntity<>(dataNew, HttpStatus.OK);
     }
 
 
@@ -37,16 +37,16 @@ public class DataController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<Data>> get(@PathVariable int id){
+    public ResponseEntity<Data> get(@PathVariable int id){
         Data data = dataService.get(id);
-        return new ResponseEntity(data, HttpStatus.OK);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable int id){
+    public ResponseEntity<Void> delete(@PathVariable int id){
         dataService.delete(id);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
