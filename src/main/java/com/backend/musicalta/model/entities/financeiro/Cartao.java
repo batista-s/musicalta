@@ -1,11 +1,15 @@
-package com.backend.musicalta.model.financeiro;
+package com.backend.musicalta.model.entities.financeiro;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jdk.jfr.Timestamp;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 @DiscriminatorValue(value = "Cartao")
 public class Cartao extends  FormaDePagamento {
     private String numero;

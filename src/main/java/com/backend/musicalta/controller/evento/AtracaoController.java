@@ -1,0 +1,53 @@
+package com.backend.musicalta.controller.evento;
+
+import com.backend.musicalta.model.entities.evento.Atracao;
+import com.backend.musicalta.model.services.evento.AtracaoService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/atracoes")
+public class AtracaoController {
+    private AtracaoService atracaoService;
+
+    public AtracaoController(AtracaoService atracaoService) {
+        this.atracaoService = atracaoService;
+    }
+
+    @PostMapping
+    public ResponseEntity create(@RequestBody @Valid Atracao atracao) {
+        atracao = atracaoService.create(atracao);
+        return new ResponseEntity<Atracao>(atracao, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity update(@PathVariable int id, @RequestBody @Valid Atracao atracao) {
+        Atracao atracaoNew = atracaoService.update(id, atracao);
+        return new ResponseEntity(atracaoNew, HttpStatus.OK);
+    }
+
+
+    @GetMapping
+    public List<Atracao> list(){
+        List<Atracao> atracoes = atracaoService.get();
+        return atracoes;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Atracao>> get(@PathVariable int id){
+        Atracao atracao = atracaoService.get(id);
+        return new ResponseEntity(atracao, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable int id){
+        atracaoService.delete(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+}

@@ -1,12 +1,16 @@
-package com.backend.musicalta.model.evento;
+package com.backend.musicalta.model.entities.evento;
 
-import com.backend.musicalta.model.usuario.Funcionario;
+import com.backend.musicalta.model.entities.usuario.Funcionario;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

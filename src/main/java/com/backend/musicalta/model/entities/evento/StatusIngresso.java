@@ -1,4 +1,4 @@
-package com.backend.musicalta.model.evento;
+package com.backend.musicalta.model.entities.evento;
 
 public enum StatusIngresso {
     DISPONIVEL,
