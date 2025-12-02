@@ -33,8 +33,7 @@ public class AtracaoController {
 
     @GetMapping
     public List<Atracao> list(){
-        List<Atracao> atracoes = atracaoService.get();
-        return atracoes;
+        return atracaoService.get();
     }
 
     @GetMapping("/{id}")

@@ -20,6 +20,6 @@ public class Data {
     private Time horaAbertura;
     @Temporal(TemporalType.TIME)
     private Time horaEncerramento;
-    @OneToOne
+    @ManyToOne
     private Atracao atracao;
 }
